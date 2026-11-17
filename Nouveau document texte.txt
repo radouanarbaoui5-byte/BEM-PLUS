@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BEM STUDY - منصة مراجعة شهادة التعليم المتوسط في الجزائر، دروس وملخصات وفيديوهات لجميع المواد">
+<title>BEM STUDY | منصة التعليم</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #080e1c;
+    color: white;
+}
+
+header {
+    background: #111c32;
+    padding: 25px;
+    text-align: center;
+    border-bottom: 2px solid #2563eb;
+}
+
+header h1 {
+    color: #60a5fa;
+    font-size: 32px;
+}
+
+header p {
+    color: #aab8ce;
+    margin-top: 10px;
+}
+
+.container {
+    width: 90%;
+    max-width: 850px;
+    margin: 30px auto;
+}
+
+.welcome {
+    background: linear-gradient(120deg,#1d4ed8,#172554);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 25px;
+}
+
+.welcome h2 {
+    margin-bottom: 12px;
+}
+
+.welcome p {
+    color: #dbeafe;
+    line-height: 1.7;
+}
+
+.subject {
+    background: #17243a;
+    border: 1px solid #293b59;
+    border-radius: 12px;
+    padding: 22px;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.subject:hover {
+    background: #233858;
+    transform: translateY(-3px);
+    border-color: #3b82f6;
+}
+
+.subject h3 {
+    font-size: 19px;
+}
+
+.subject span {
+    color: #60a5fa;
+    font-size: 23px;
+}
+
+#lessons {
+    display: none;
+    background: #17243a;
+    padding: 25px;
+    border-radius: 15px;
+}
+
+#subjectTitle {
+    color: #60a5fa;
+    margin-bottom: 20px;
+}
+
+.lesson {
+    background: #233858;
+    padding: 18px;
+    border-radius: 10px;
+    margin-bottom: 14px;
+}
+
+.lesson h3 {
+    margin-bottom: 15px;
+}
+
+.watch {
+    display: inline-block;
+    background: #2563eb;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.watch:hover {
+    background: #1d4ed8;
+}
+
+.back {
+    background: #475569;
+    color: white;
+    border: none;
+    padding: 12px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.back:hover {
+    background: #64748b;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #8293ad;
+    margin-top: 30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚 BEM STUDY</h1>
+    <p>منصتك التعليمية للتحضير لشهادة التعليم المتوسط</p>
+</header>
+
+<div class="container">
+
+    <div class="welcome">
+        <h2>مرحبا بك في BEM STUDY 👋</h2>
+        <p>
+            هنا تلقى جميع المواد والدروس والفيديوهات
+            لمساعدتك على التحضير الجيد لشهادة التعليم المتوسط.
+        </p>
+    </div>
+
+    <div id="subjects">
+
+        <div class="subject" onclick="openSubject('العربية')">
+            <h3>📖 اللغة العربية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('الرياضيات')">
+            <h3>📐 الرياضيات</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('العلوم الطبيعية')">
+            <h3>🧬 العلوم الطبيعية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('العلوم الفيزيائية')">
+            <h3>⚗️ العلوم الفيزيائية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('التاريخ والجغرافيا')">
+            <h3>🌍 التاريخ والجغرافيا</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('التربية المدنية')">
+            <h3>⚖️ التربية المدنية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('الفرنسية')">
+            <h3>🇫🇷 اللغة الفرنسية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('الإنجليزية')">
+            <h3>🇬🇧 اللغة الإنجليزية</h3><span>←</span>
+        </div>
+
+        <div class="subject" onclick="openSubject('التربية الإسلامية')">
+            <h3>☪️ التربية الإسلامية</h3><span>←</span>
+        </div>
+
+    </div>
+
+    <div id="lessons">
+        <h2 id="subjectTitle"></h2>
+        <div id="lessonList"></div>
+        <button class="back" onclick="goBack()">رجوع للمواد</button>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 BEM STUDY | جميع الحقوق محفوظة
+</footer>
+
+<script>
+
+const videos = {
+    "العربية": [
+        {
+            title: "فيديو مراجعة اللغة العربية",
+            url: "https://www.youtube.com/live/KVffuuyEOfU"
+        }
+    ],
+
+    "الرياضيات": [
+        {
+            title: "فيديو مراجعة الرياضيات",
+            url: "https://youtu.be/dX7b8J_M3fM"
+        }
+    ],
+
+    "العلوم الطبيعية": [
+        {
+            title: "فيديو مراجعة العلوم الطبيعية",
+            url: "https://youtu.be/W6H_YWFkrCk"
+        }
+    ],
+
+    "العلوم الفيزيائية": [
+        {
+            title: "فيديو مراجعة الفيزياء",
+            url: "https://youtu.be/QNAFUyQpQ3o"
+        }
+    ],
+
+    "التاريخ والجغرافيا": [
+        {
+            title: "فيديو مراجعة التاريخ والجغرافيا",
+            url: "https://youtu.be/uc3_jVwcxkk"
+        }
+    ],
+
+    "التربية المدنية": [
+        {
+            title: "فيديو مراجعة التربية المدنية",
+            url: "https://youtu.be/2842G2f4qGY"
+        }
+    ],
+
+    "الفرنسية": [
+        {
+            title: "فيديو مراجعة الفرنسية",
+            url: "https://youtu.be/AHBfzfZfv74"
+        }
+    ],
+
+    "الإنجليزية": [
+        {
+            title: "فيديو مراجعة الإنجليزية",
+            url: "https://youtu.be/DdNrzof4rQo"
+        }
+    ],
+
+    "التربية الإسلامية": [
+        {
+            title: "فيديو مراجعة التربية الإسلامية",
+            url: "https://www.youtube.com/live/BVp2stT2ZEg"
+        }
+    ]
+};
+
+function openSubject(name) {
+
+    document.getElementById("subjects").style.display = "none";
+
+    document.getElementById("lessons").style.display = "block";
+
+    document.getElementById("subjectTitle").innerText =
+        "📚 " + name;
+
+    const list = document.getElementById("lessonList");
+
+    list.innerHTML = "";
+
+    videos[name].forEach(video => {
+
+        const lesson = document.createElement("div");
+        lesson.className = "lesson";
+
+        const title = document.createElement("h3");
+        title.textContent = "🎬 " + video.title;
+
+        const link = document.createElement("a");
+        link.href = video.url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.className = "watch";
+        link.textContent = "▶ مشاهدة الفيديو";
+
+        lesson.appendChild(title);
+        lesson.appendChild(link);
+
+        list.appendChild(lesson);
+
+    });
+
+}
+
+function goBack() {
+
+    document.getElementById("subjects").style.display = "block";
+
+    document.getElementById("lessons").style.display = "none";
+
+}
+
+</script>
+
+</body>
+</html>
